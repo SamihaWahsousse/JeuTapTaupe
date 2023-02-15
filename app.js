@@ -3,23 +3,48 @@
 // hide an element randomly from a list of elements
 
 $(document).ready(function () {
-	setInterval(function () {
+	var score = 0;
+	var roundTimer = 5;
+	var playerName;
+
+	var startGame = setInterval(function () {
 		$(".taupe").hide();
-		let randomNumber = Math.floor(Math.random() * 9 + 1);
+		var randomNumber = Math.floor(Math.random() * 9 + 1);
 		//console.log(randomNumber);
-		let hideTaupe = $("#taupe" + randomNumber);
+		var hideTaupe = $("#taupe" + randomNumber);
 		//console.log(hideTaupe);
-		hideTaupe.toggle(1000);
+		hideTaupe.toggle(100);
+		//
+		roundTimer--;
+		var timerDisplay = ($("#timer").innerText = "00:" + roundTimer);
+		console.log(($("#timer").innerText = "00:" + roundTimer));
+
+		if (roundTimer === 0) {
+			$(".containerTaupes").before(
+				'<span id="gameOver"> ** Game Over **</span>'
+			);
+			clearInterval(startGame);
+			$(".taupe").hide();
+		}
 	}, 1000);
 
-	var score = 0;
-
+	//increase the score number for each click on taupe
 	$(".taupe").click(function () {
 		$(this).hide();
 		score++;
 		console.log(score);
 		$("#score").replaceWith(
-			"<div id='score'>Your Score : " + score + "</div>"
+			"<div id='score'>Your Score : </br>" + score + "</div>"
 		);
 	});
+
+	// display player's name after click on start button
+	$("#playBtn").click(function () {
+		playerName = $("#inputPlayerName").val();
+		$("h4").replaceWith("<h4> Welcome " + playerName + "</h4>");
+		console.log($(".headerContainer > h4").html());
+	});
+
+	//set a timer for a partie when click start button
+	//set a stop function to stop the set intervall
 });

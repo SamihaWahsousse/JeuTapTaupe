@@ -1,18 +1,11 @@
 .headerContainer {
 	display: flex;
 	font-size: xx-large;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	align-items: baseline;
-}
-#score {
-	border: 1px solid black;
+	color: rgb(209, 174, 241);
 }
 
-h4 {
-	color: rgb(209, 174, 241);
-	text-align: center;
-	border: 1px solid black;
-}
 body {
 	height: 100vh;
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -33,7 +26,8 @@ body {
 .itemTaupe {
 	/* width: 150px; */
 	height: 150px;
-	border: 2px solid black;
+	box-shadow: 8px 3px 3px rgb(113, 99, 126);
+	/* border: 2px solid black; */
 	/* margin: 10%; */
 	background-color: rgb(152, 112, 188);
 	text-align: center;
