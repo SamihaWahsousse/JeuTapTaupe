@@ -1,10 +1,11 @@
-// créer des container de taupe
-// appliquer du hide et show sur chaque taupe
+//Pseudo-code
+//create a taupe container
+// apply hide and show for each taupe
 // hide an element randomly from a list of elements
 
 $(document).ready(function () {
 	var score = 0;
-	var roundTimer = 5;
+	var roundTimer = 10;
 	var playerName;
 
 	var startGame = setInterval(function () {
@@ -13,20 +14,27 @@ $(document).ready(function () {
 		//console.log(randomNumber);
 		var hideTaupe = $("#taupe" + randomNumber);
 		//console.log(hideTaupe);
-		hideTaupe.toggle(100);
+		hideTaupe.toggle(200);
 		//
 		roundTimer--;
-		var timerDisplay = ($("#timer").innerText = "00:" + roundTimer);
+		var displayTimer = "timer : <span>00:" + roundTimer + "</span>";
+		$("#timer").html(displayTimer);
 		console.log(($("#timer").innerText = "00:" + roundTimer));
 
 		if (roundTimer === 0) {
-			$(".containerTaupes").before(
-				'<span id="gameOver"> ** Game Over **</span>'
-			);
+			if (score === 0)
+				$(".containerTaupes").before(
+					'<span id="gameOver"> * Game Over *<span id=looseMsg>You loose</span></span>'
+				);
+			else {
+				$(".containerTaupes").before(
+					'<span id="gameOver"> * Congratulations! *<span id=winMsg>You win</span></span>'
+				);
+			}
 			clearInterval(startGame);
 			$(".taupe").hide();
 		}
-	}, 1000);
+	}, 800);
 
 	//increase the score number for each click on taupe
 	$(".taupe").click(function () {
@@ -34,17 +42,8 @@ $(document).ready(function () {
 		score++;
 		console.log(score);
 		$("#score").replaceWith(
-			"<div id='score'>Your Score : </br>" + score + "</div>"
+			"<div id='score'>Your Score : " + score + "</div>"
 		);
 	});
 
-	// display player's name after click on start button
-	$("#playBtn").click(function () {
-		playerName = $("#inputPlayerName").val();
-		$("h4").replaceWith("<h4> Welcome " + playerName + "</h4>");
-		console.log($(".headerContainer > h4").html());
-	});
-
-	//set a timer for a partie when click start button
-	//set a stop function to stop the set intervall
 });

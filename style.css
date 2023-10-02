@@ -24,11 +24,8 @@ body {
 }
 
 .itemTaupe {
-	/* width: 150px; */
-	height: 150px;
+	height: 120px;
 	box-shadow: 8px 3px 3px rgb(113, 99, 126);
-	/* border: 2px solid black; */
-	/* margin: 10%; */
 	background-color: rgb(152, 112, 188);
 	text-align: center;
 	flex: 0 0 215px;
@@ -36,6 +33,17 @@ body {
 }
 
 img {
-	height: 120px;
-	width: 120px;
+	height: 100px;
+	width: 100px;
+}
+
+#gameOver {
+	font-size: larger;
+}
+#looseMsg {
+	color: rgb(167, 3, 3);
+}
+
+#winMsg {
+	color: rgb(1, 48, 1);
 }
